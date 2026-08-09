@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">تفاصيل المقال الإبداعي | أحمد الدهان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #995F2F;
+            --secondary: #978F66;
+            --dark: #622B14;
+            --light: #E4D6A9;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.85);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background: #f8f8f8; color: #333; line-height: 1.8; overflow-x: hidden; }
+
+        .top-nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .logo-box h1 { font-size: 1.5rem; color: var(--dark); font-weight: 900; }
+        .logo-box span { color: var(--primary); font-size: 0.8rem; font-weight: 700; display: block; margin-top: -5px; }
+
+        .back-home {
+            background: var(--dark); color: #fff; text-decoration: none;
+            padding: 10px 25px; border-radius: 50px; font-weight: 700;
+            display: flex; align-items: center; gap: 10px; transition: 0.4s;
+        }
+        .back-home:hover { background: var(--primary); transform: translateX(-10px); }
+
+        .article-hero {
+            height: 60vh; width: 100%; position: relative; margin-top: 0;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .hero-img {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; filter: brightness(0.6); transform: scale(1.1);
+        }
+        .hero-overlay-text {
+            position: relative; z-index: 5; text-align: center; color: #fff; padding: 0 10%;
+        }
+        .hero-overlay-text h2 { font-size: 3.5rem; font-weight: 900; text-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+        .main-container {
+            max-width: 1100px; margin: -100px auto 100px; position: relative; z-index: 10;
+            background: var(--white); border-radius: 50px; padding: 80px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.08);
+        }
+
+        .article-meta-info {
+            display: flex; gap: 30px; margin-bottom: 40px; padding-bottom: 20px;
+            border-bottom: 1px dashed var(--light); color: var(--secondary); font-weight: 700;
+        }
+        .article-meta-info i { color: var(--primary); }
+
+        .content-section { margin-bottom: 50px; }
+        .content-section h3 {
+            font-size: 2rem; color: var(--dark); margin-bottom: 25px;
+            display: flex; align-items: center; gap: 15px;
+        }
+        .content-section h3::after {
+            content: ''; height: 4px; flex: 1; background: linear-gradient(to left, var(--primary), transparent);
+            border-radius: 2px;
+        }
+
+        .content-section p { font-size: 1.25rem; color: #555; text-align: justify; margin-bottom: 25px; }
+
+        .highlight-box {
+            background: var(--light); padding: 40px; border-radius: 30px;
+            border-right: 10px solid var(--primary); margin: 40px 0;
+            position: relative; overflow: hidden;
+        }
+        .highlight-box::before {
+            content: '\f10e'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; top: 10px; left: 20px; font-size: 5rem; opacity: 0.1; color: var(--dark);
+        }
+        .highlight-box h4 { font-size: 1.5rem; color: var(--dark); margin-bottom: 15px; }
+
+        .image-gallery {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 40px 0;
+        }
+        .image-gallery img {
+            width: 100%; height: 300px; object-fit: cover; border-radius: 20px;
+            transition: 0.5s; cursor: pointer;
+        }
+        .image-gallery img:hover { transform: scale(1.03); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+        .expert-tips {
+            list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+        }
+        .expert-tips li {
+            background: #fdfdfd; padding: 20px; border-radius: 15px; border: 1px solid var(--light);
+            display: flex; align-items: center; gap: 15px; font-weight: 700; color: var(--dark);
+        }
+        .expert-tips li i { color: var(--primary); font-size: 1.5rem; }
+
+        .footer-cta {
+            text-align: center; margin-top: 80px; padding-top: 50px; border-top: 1px solid #eee;
+        }
+        .footer-cta h4 { font-size: 2rem; color: var(--dark); margin-bottom: 20px; }
+        .cta-button {
+            display: inline-block; background: var(--primary); color: #fff;
+            padding: 18px 50px; border-radius: 50px; text-decoration: none;
+            font-weight: 900; font-size: 1.2rem; transition: 0.4s;
+            box-shadow: 0 15px 30px rgba(153, 95, 47, 0.3);
+        }
+        .cta-button:hover { transform: translateY(-5px); background: var(--dark); }
+
+        @media (max-width: 992px) {
+            .main-container { padding: 40px 25px; margin-top: -50px; border-radius: 30px; }
+            .hero-overlay-text h2 { font-size: 2.2rem; }
+            .expert-tips { grid-template-columns: 1fr; }
+            .image-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="logo-box">
+            <h1>أحمد الدهان</h1>
+            <span>للدهانات والديكورات الحديثة</span>
+        </div>
+        <a href="index.html" class="back-home">
+            <i class="fas fa-home"></i> العودة للرئيسية
+        </a>
+    </nav>
+
+    <header class="article-hero">
+        <img src="" alt="" id="post-hero-img" class="hero-img">
+        <div class="hero-overlay-text">
+            <h2 id="post-main-title"></h2>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="article-meta-info">
+            <span><i class="fas fa-calendar-alt"></i> <span id="post-date"></span></span>
+            <span><i class="fas fa-user-tie"></i> بواسطة: أحمد الدهان</span>
+            <span><i class="fas fa-map-marker-alt"></i> جدة، السعودية</span>
+        </div>
+
+        <article id="dynamic-content">
+        </article>
+
+        <div class="footer-cta">
+            <h4>هل أنت مستعد لتغيير شكل منزلك؟</h4>
+            <p style="margin-bottom: 30px; color: #777;">فريقنا بانتظار اتصالك لتحويل أحلامك في الديكور إلى واقع ملموس وبأعلى جودة تنفيذ في المملكة.</p>
+            <a href="tel:0550140690" class="cta-button">اتصل بنا الآن: 0550140690</a>
+        </div>
+    </main>
+
+    <script>
+        const blogData = {
+            "1": {
+                title: "دليل اختيار ألوان الدهانات لعام 2026: دمج الفخامة بالراحة",
+                date: "15 مايو 2026",
+                img: "images/blog1.png",
+                content: `
+                    <div class="content-section">
+                        <h3>سيكولوجية الألوان وتأثيرها</h3>
+                        <p>في عالم التصميم الداخلي، لا تُعتبر الألوان مجرد صبغات على الجدران، بل هي لغة تعبر عن هوية المساحة وتؤثر بشكل مباشر على الحالة النفسية لساكنيها. في منازل جدة الحديثة، نركز على اختيار الدرجات التي تخلق توازناً بين دفء المكان وبرودته اللازمة لمواجهة المناخ الخارجي.</p>
+                        <p>من أبرز اتجاهات عام 2025 هي "الألوان الترابية المشبعة" التي تعطي شعوراً بالأمان والارتباط بالطبيعة. درجات مثل "التيراكوتا الناعمة" و"البيج الفطري" تكتسح المجالس والصالات الكبيرة.</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>نصيحة الخبير أحمد الدهان</h4>
+                        <p>دائماً ما ننصح عملاءنا بتجربة "عينة اللون" على مساحة 1 متر مربع في الغرفة ومراقبة تغيرها مع إضاءة الشمس نهاراً وإضاءة الـ LED ليلاً قبل اتخاذ القرار النهائي.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>أنواع الدهانات الاحترافية التي نستخدمها</h3>
+                        <p>نحن لا نكتفي باللون فقط، بل نهتم بنوعية الخامة. نوفر الدهانات البلاستيكية عالية الجودة، دهانات الإيبوكسي للمساحات الخدمية، والدهانات الديكورية الفاخرة.</p>
+                        <ul class="expert-tips">
+                            <li><i class="fas fa-check-circle"></i> دهانات مطفية تماماً لإخفاء عيوب اللياسة.</li>
+                            <li><i class="fas fa-check-circle"></i> دهانات حريرية سهلة التنظيف للممرات وغرف الأطفال.</li>
+                            <li><i class="fas fa-check-circle"></i> دهانات "القطيفة" لإعطاء ملمس مخملي فاخر للمجالس.</li>
+                            <li><i class="fas fa-check-circle"></i> دهانات "ستوكو" لمحاكاة ملمس الرخام الطبيعي.</li>
+                        </ul>
+                    </div>
+
+                    <div class="image-gallery">
+                        <img src="images/photo_6034892800433786745_y.jpg" alt="عمل تنفيذ دهان">
+                        <img src="images/photo_6034892800433786747_y.jpg" alt="تنسيق ألوان">
+                    </div>
+                `
+            },
+            "2": {
+                title: "لماذا يتفوق بديل الرخام وبديل الخشب على المواد الطبيعية؟",
+                date: "10 مايو 2026",
+                img: "images/blog2.png",
+                content: `
+                    <div class="content-section">
+                        <h3>ثورة البدائل في منازل جدة</h3>
+                        <p>تعتبر مدينة جدة بيئة مليئة بالتحديات من حيث الرطوبة العالية والحرارة، وهو ما يجعل الرخام الطبيعي يحتاج لصيانة مستمرة والخشب الطبيعي عرضة للتمدد والتسوس. هنا يأتي دور البدائل الذكية (PVC و WPC).</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>مقارنة الجودة والتكلفة</h4>
+                        <p>بديل الرخام يوفر لك مظهر عروق الكالاكاتا والإستواريو المذهل بتكلفة لا تتجاوز 30% من سعر الرخام الطبيعي، مع ضمان عدم امتصاص السوائل أو تبقع السطح.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>مميزات بديل الخشب (WPC) لدينا</h3>
+                        <p>نحن نستخدم تكسيات تتميز بـ:</p>
+                        <ul class="expert-tips">
+                            <li><i class="fas fa-shield-alt"></i> مقاومة مطلقة للنمل الأبيض والحشرات.</li>
+                            <li><i class="fas fa-tint-slash"></i> مضاد تماماً للمياه والرطوبة ولا يمتص الروائح.</li>
+                            <li><i class="fas fa-tools"></i> تركيب سريع بدون تكسير أو غبار مزعج.</li>
+                            <li><i class="fas fa-paint-brush"></i> ثبات لوني لا يتغير مع مرور الزمن.</li>
+                        </ul>
+                    </div>
+
+                    <div class="image-gallery">
+                        <img src="images/photo_6034892800433786735_y.jpg" alt="بديل خشب">
+                        <img src="images/photo_6034892800433786758_y.jpg" alt="بديل رخام">
+                    </div>
+                `
+            },
+            "3": {
+                title: "بديل الشيبورد والديكورات العصرية: الفخامة المطفية",
+                date: "05 مايو 2026",
+                img: "images/blog3.png",
+                content: `
+                    <div class="content-section">
+                        <h3>الأناقة في البساطة (Minimalism)</h3>
+                        <p>يعد بديل الشيبورد المطفي هو الخيار الأول حالياً لتنفيذ خلفيات التلفاز وغرف النوم الفندقية. يتميز سطحه بقدرة فائقة على امتصاص الإنعكاسات المزعجة، مما يريح العين ويعطي فخامة هادئة للمكان.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3>تطبيقات مبتكرة في الديكور</h3>
+                        <p>يمكن استغلال هذه الألواح في:</p>
+                        <ul class="expert-tips">
+                            <li><i class="fas fa-lightbulb"></i> دمجها مع إضاءات الـ Profile Light لإعطاء عمق للجدران.</li>
+                            <li><i class="fas fa-border-all"></i> تقسيم الجدران الكبيرة بلمسات هندسية مع الاستيل.</li>
+                            <li><i class="fas fa-door-open"></i> تكسية الأبواب الجدارية المخفية (Secret Doors).</li>
+                            <li><i class="fas fa-star"></i> خلق تباين لوني بين الحوائط والأرضيات.</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>سر التنفيذ الاحترافي</h4>
+                        <p>في مؤسسة أحمد الدهان، نستخدم مناشير دقيقة جداً لضمان أن تكون الزوايا قائمة 100% والتقفيلات ناعمة لا يمكن رؤية الفواصل بينها.</p>
+                    </div>
+
+                    <div class="image-gallery">
+                        <img src="images/photo_6034892800433786739_y.jpg" alt="شيبورد مطفي">
+                        <img src="images/photo_6034892800433786750_y.jpg" alt="تصميم مودرن">
+                    </div>
+                `
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const data = blogData[id];
+
+        if (data) {
+            document.getElementById('post-hero-img').src = data.img;
+            document.getElementById('post-main-title').innerText = data.title;
+            document.getElementById('post-date').innerText = data.date;
+            document.getElementById('dynamic-content').innerHTML = data.content;
+            document.getElementById('page-title').innerText = data.title + " | أحمد الدهان";
+        } else {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
