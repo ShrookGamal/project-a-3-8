@@ -195,3 +195,22 @@ contactCards.forEach(card => {
     card.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
     contactObserver.observe(card);
 });
+const areaCards = document.querySelectorAll('.area-card');
+
+const areaObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+        }
+    });
+}, { threshold: 0.1 });
+
+areaCards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'all 0.6s ease-out';
+    areaObserver.observe(card);
+});
